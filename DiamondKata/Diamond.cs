@@ -10,9 +10,6 @@ public interface IDiamond
 
 public partial class Diamond : IDiamond
 {
-    [GeneratedRegex("^[a-zA-Z]$")]
-    private static partial Regex ValidateCharacter();
-
     private readonly List<DiamondDetails> _diamondDetails = new();
 
     public string PlotDiamond(string character)
@@ -20,11 +17,11 @@ public partial class Diamond : IDiamond
         //check letter is not null
         if (character is null)
         {
-            throw new ArgumentNullException();
+            throw new ArgumentNullException(nameof(character),"Null character supplied - must supply an alphabetical single character");
         }
         
         //check letter is alphanumeric
-        if (!ValidateCharacter().IsMatch(character))
+        if (!Regex.IsMatch(character,"^[a-zA-Z]$", RegexOptions.Compiled))
         {
             throw new ArgumentException("Invalid character supplied - must be an alphabetical single character");
         }
