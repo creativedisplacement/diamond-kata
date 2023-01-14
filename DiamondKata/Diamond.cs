@@ -48,14 +48,17 @@ public partial class Diamond : IDiamond
     private void CalculateDiamondDetails(int lastCharacterIndex)
     {
         const int firstCharacterIndex = 'A';
+        
         for (var character = firstCharacterIndex; character <= lastCharacterIndex; character++)
         {
+            
             _diamondDetails.Add(new DiamondDetails
             {
                 Character = (char)character,
                 NumberOfInternalSpaces = CalculateInternalSpacing(character),
                 NumberOfTrailingSpaces = CalculateLeadingAndTrailingSpacing(character, lastCharacterIndex)
             });
+            
         }
     }
 
@@ -119,7 +122,7 @@ public partial class Diamond : IDiamond
 
             stringb.AppendLine(string.Empty);
         }
-
+        
         return stringb.ToString();
     }
 }

@@ -7,7 +7,7 @@ namespace DiamondKata.Tests
         private readonly IDiamond _diamond;
 
         // Used this approach to simulate dependency injection
-        public DiamondTests() : this (new Diamond())
+        public DiamondTests() : this(new Diamond())
         {
         }
 
@@ -26,6 +26,7 @@ namespace DiamondKata.Tests
         public void Invalid_Supplied_Character_Throws_Argument_Exception(string character, string errorMessage)
         {
             var result = Assert.Throws<ArgumentException>(() => _diamond.PlotDiamond(character));
+            
             Assert.Equal(errorMessage, result.Message);
         }
 
@@ -33,6 +34,7 @@ namespace DiamondKata.Tests
         public void Null_Character_Throws_Argument_Null_Exception()
         {
             var result = Assert.Throws<ArgumentNullException>(() => _diamond.PlotDiamond(null));
+            
             Assert.Equal("Value cannot be null.", result.Message);
         }
 
@@ -45,9 +47,10 @@ namespace DiamondKata.Tests
 
             expectedResult.Append('A');
             expectedResult.AppendLine(string.Empty);
-            
+
             var result = _diamond.PlotDiamond(character);
-           Assert.Equal(expectedResult.ToString(), result); 
+
+            Assert.Equal(expectedResult.ToString(), result);
         }
 
         [Theory]
@@ -56,7 +59,7 @@ namespace DiamondKata.Tests
         public void Character_E_Returns_Correct_Result(string character)
         {
             var expectedResult = new StringBuilder();
-            
+
             expectedResult.AppendLine("----A----");
             expectedResult.AppendLine("---B-B---");
             expectedResult.AppendLine("--C---C--");
@@ -66,8 +69,9 @@ namespace DiamondKata.Tests
             expectedResult.AppendLine("--C---C--");
             expectedResult.AppendLine("---B-B---");
             expectedResult.AppendLine("----A----");
-            
+
             var result = _diamond.PlotDiamond(character);
+
             Assert.Equal(expectedResult.ToString(), result);
         }
     }
