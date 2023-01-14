@@ -6,6 +6,7 @@ namespace DiamondKata.Tests
     {
         private readonly IDiamond _diamond;
 
+        // Used this approach to simulate dependency injection
         public DiamondTests() : this (new Diamond())
         {
         }

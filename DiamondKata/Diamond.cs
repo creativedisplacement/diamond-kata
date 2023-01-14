@@ -29,13 +29,17 @@ public partial class Diamond : IDiamond
             throw new ArgumentException("Invalid character supplied - must be an alphabetical single character");
         }
 
+        // take the first letter and make uppercase
         var validCharacter = character
             .ToUpper()
             .ToCharArray()
             .FirstOrDefault();
 
         CalculateDiamondDetails(validCharacter);
+        
         var diamondTop = DrawDiamondToConsole(_diamondDetails);
+        
+        // as we don't need the supplied character to be printed again, use linq to skip it
         var diamondBottom = DrawDiamondToConsole(_diamondDetails.AsEnumerable().Reverse().Skip(1));
 
         return $"{diamondTop}{diamondBottom}";

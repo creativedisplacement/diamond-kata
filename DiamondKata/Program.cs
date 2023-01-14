@@ -2,7 +2,7 @@
 
 namespace DiamondKata
 {
-    internal partial class Program
+    internal class Program
     {
         
         private static void Main(string[] args)
