@@ -5,14 +5,14 @@ namespace DiamondKata;
 
 public interface IDiamond
 {
-    string PlotDiamond(string character);
+    string PlotDiamond(string? character);
 }
 
 public partial class Diamond : IDiamond
 {
     private readonly List<DiamondDetails> _diamondDetails = new();
 
-    public string PlotDiamond(string character)
+    public string PlotDiamond(string? character)
     {
         //check letter is not null
         if (character is null)
