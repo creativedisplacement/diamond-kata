@@ -8,7 +8,7 @@ public interface IDiamond
     string PlotDiamond(string? character);
 }
 
-public partial class Diamond : IDiamond
+public class Diamond : IDiamond
 {
     private readonly List<DiamondDetails> _diamondDetails = new();
 
@@ -85,41 +85,41 @@ public partial class Diamond : IDiamond
 
     private static string DrawOuterDiamond(int numberOfDashes)
     {
-        var stringb = new StringBuilder();
+        var stringBuilder = new StringBuilder();
 
         for (var dash = 0; dash < numberOfDashes; dash++)
         {
-            stringb.Append('-');
+            stringBuilder.Append('-');
         }
 
-        return stringb.ToString();
+        return stringBuilder.ToString();
     }
 
     private static string DrawDiamondToConsole(IEnumerable<DiamondDetails> diamondDetails)
     {
-        var stringb = new StringBuilder();
+        var stringBuilder = new StringBuilder();
 
         foreach (var diamondDetail in diamondDetails)
         {
-            stringb.Append(DrawOuterDiamond(diamondDetail.NumberOfTrailingSpaces));
+            stringBuilder.Append(DrawOuterDiamond(diamondDetail.NumberOfTrailingSpaces));
 
-            stringb.Append(diamondDetail.Character);
+            stringBuilder.Append(diamondDetail.Character);
 
             if (diamondDetail.NumberOfInternalSpaces > 0)
             {
                 for (var spaces = 0; spaces < diamondDetail.NumberOfInternalSpaces; spaces++)
                 {
-                    stringb.Append('-');
+                    stringBuilder.Append('-');
                 }
 
-                stringb.Append(diamondDetail.Character);
+                stringBuilder.Append(diamondDetail.Character);
             }
 
-            stringb.Append(DrawOuterDiamond(diamondDetail.NumberOfTrailingSpaces));
+            stringBuilder.Append(DrawOuterDiamond(diamondDetail.NumberOfTrailingSpaces));
 
-            stringb.AppendLine(string.Empty);
+            stringBuilder.AppendLine(string.Empty);
         }
         
-        return stringb.ToString();
+        return stringBuilder.ToString();
     }
 }
