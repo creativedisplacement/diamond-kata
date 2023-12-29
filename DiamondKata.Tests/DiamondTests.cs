@@ -35,7 +35,7 @@ namespace DiamondKata.Tests
         {
             var result = Assert.Throws<ArgumentNullException>(() => _diamond.PlotDiamond(null));
             
-            Assert.Equal("Value cannot be null.", result.Message);
+            Assert.Equal("Null character supplied - must supply an alphabetical single character (Parameter 'character')", result.Message);
         }
 
         [Theory]
